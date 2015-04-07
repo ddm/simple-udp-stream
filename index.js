@@ -63,9 +63,9 @@ util.inherits(SimpleUdpStream, stream.Writable);
  * @private
  */
 SimpleUdpStream.prototype._write = function (chunk, encoding, callback) {
-  if (_.isString(chunk)) chunk = new Buffer(chunk, encoding);
+  var message = _.isString(chunk) ? new Buffer(chunk, encoding) : chunk;
 
-  this.socket.send(chunk, 0, chunk.length, this.destinationPort, this.destinationAddress);
+  this.socket.send(message, 0, message.length, this.destinationPort, this.destinationAddress);
 
   if (_.isFunction(callback)) callback();
   return true;
