@@ -1,6 +1,6 @@
 {
   "name": "simple-udp-stream",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Writable stream over UDP",
   "author": "Dimitri del Marmol",
   "license": "MIT",
