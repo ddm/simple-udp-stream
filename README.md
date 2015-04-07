@@ -15,6 +15,8 @@ simple-udp-stream
 
     stream.write("Hello World!");
 
+![Wireshark capture](https://i.imgur.com/89Am8Zu.png)
+
 ## Bunyan and logstash
 
 Configure [logstash](http://logstash.net/) to listen to UDP logs:
