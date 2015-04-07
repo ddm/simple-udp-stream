@@ -1,5 +1,4 @@
 "use strict";
-/* eslint no-unused-expressions:0 */
 
 var chai = require('chai');
 var expect = chai.expect;
@@ -10,6 +9,7 @@ var path = require('path');
 var SimpleUdpStream = require('../index');
 
 describe("UDP stream", function () {
+
   it("should receive a written message", function (done) {
 
     var testMessage = "Test 1\n";

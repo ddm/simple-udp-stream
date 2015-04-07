@@ -1,7 +1,7 @@
 simple-udp-stream
 =================
 
-## Usage
+## Basic usage
 
     var SimpleUdpStream = require('simple-udp-stream');
 
@@ -12,7 +12,24 @@ simple-udp-stream
 
     stream.write("Hello World!");
 
-## Bunyan
+## Bunyan and logstash
+
+Configure [logstash](http://logstash.net/) to listen to UDP logs:
+
+    input {
+      udp {
+         port => 9999
+         codec => json
+      }
+    }
+    output {
+      elasticsearch {
+        host => localhost
+        protocol => http
+      }
+    }
+
+Configure [bunyan](https://github.com/trentm/node-bunyan) to log over UDP:
 
     var bunyan = require('bunyan');
 

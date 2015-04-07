@@ -38,5 +38,4 @@ SimpleUdpStream.prototype._write = function (message, encoding, callback) {
   return true;
 };
 
-
 module.exports = SimpleUdpStream;
