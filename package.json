@@ -11,7 +11,8 @@
     "doc": "jsdoc .",
     "report": "plato -l .jshintrc -d out *.js test/*.js",
     "lint": "eslint *.js test/*.js",
-    "coverage": "istanbul cover --report html node_modules/.bin/_mocha"
+    "coverage": "istanbul cover --report html node_modules/.bin/_mocha",
+    "release": "npm version patch && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
