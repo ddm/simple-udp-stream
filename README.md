@@ -1,6 +1,8 @@
 simple-udp-stream
 =================
 
+[![Dependency Status](https://david-dm.org/ddm/simple-udp-stream.svg)](https://david-dm.org/ddm/simple-udp-stream)
+
 ## Basic usage
 
     var SimpleUdpStream = require('simple-udp-stream');
