@@ -21,7 +21,7 @@ describe("UDP stream", function () {
 
     var stream = new SimpleUdpStream(params);
 
-    var receiver = dgram.createSocket("udp4");
+    var receiver = dgram.createSocket('udp4');
     receiver.on('message', function (msg) {
       expect(msg.toString()).to.equal(testMessage);
 
@@ -42,7 +42,7 @@ describe("UDP stream", function () {
 
     var stream = new SimpleUdpStream(params);
 
-    var receiver = dgram.createSocket("udp4");
+    var receiver = dgram.createSocket('udp4');
     receiver.on('message', function (msg) {
       expect(msg.toString()).to.equal("Test 2\n");
 
