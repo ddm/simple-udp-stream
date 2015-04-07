@@ -1,0 +1,19 @@
+{
+  "undef": true,
+  "unused": true,
+  "quotmark": false,
+  "globalstrict": true,
+  "globals": {
+    "console": false,
+    "require": false,
+    "module": false,
+    "process": false,
+    "__dirname": false,
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  }
+}
