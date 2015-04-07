@@ -2,6 +2,7 @@
 
 var chai = require('chai');
 var expect = chai.expect;
+
 var dgram = require('dgram');
 var fs = require('fs');
 var path = require('path');
@@ -83,7 +84,6 @@ describe("UDP stream", function () {
     receiver.bind(params.port, params.destination);
 
     logger.info({ value: 1 }, "Hello");
-
   });
 
 });
