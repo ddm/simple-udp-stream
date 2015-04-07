@@ -9,6 +9,19 @@ var nodeVersion = process.version.replace('v', '').split(/\./gi).map(function (t
   return parseInt(t, 10);
 });
 
+/**
+ * Writable stream over UDP
+ * <br>
+ * See <a href="https://nodejs.org/api/stream.html#stream_class_stream_writable">node.js documentation</a>
+ *
+ * @class SimpleUdpStream
+ *
+ * @param {!Object} options
+ * @param {!string} options.destination - destination hostname or address for UDP packets
+ * @params {!number} options.port - destination port for UDP packets
+ *
+ * @constructor
+ */
 function SimpleUdpStream(options) {
   if (!(this instanceof SimpleUdpStream)) return new SimpleUdpStream(options);
 
@@ -29,10 +42,30 @@ function SimpleUdpStream(options) {
 
 util.inherits(SimpleUdpStream, stream.Writable);
 
-SimpleUdpStream.prototype._write = function (message, encoding, callback) {
-  if (_.isString(message)) message = new Buffer(message, encoding);
+/**
+ * @method write
+ * @memberOf SimpleUdpStream
+ *
+ * @param {!string|!Buffer} chunk - the data to write
+ * @param {?string} encoding - the encoding, if <code>chunk</code> is a string
+ * @param {?Function} callback - callback upon write
+ * @returns {boolean} true
+ */
 
-  this.socket.send(message, 0, message.length, this.destinationPort, this.destinationAddress);
+/**
+ * @method _write
+ * @memberOf SimpleUdpStream
+ *
+ * @param {!string|!Buffer} chunk - the data to write
+ * @param {?string} encoding - the encoding, if <code>chunk</code> is a string
+ * @param {?Function} callback - callback upon write
+ * @returns {boolean} true
+ * @private
+ */
+SimpleUdpStream.prototype._write = function (chunk, encoding, callback) {
+  if (_.isString(chunk)) chunk = new Buffer(chunk, encoding);
+
+  this.socket.send(chunk, 0, chunk.length, this.destinationPort, this.destinationAddress);
 
   if (_.isFunction(callback)) callback();
   return true;
