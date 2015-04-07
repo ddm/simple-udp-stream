@@ -15,7 +15,7 @@ simple-udp-stream
 
     stream.write("Hello World!");
 
-![Wireshark capture](https://i.imgur.com/89Am8Zu.png)
+![Wireshark simple capture](https://i.imgur.com/89Am8Zu.png)
 
 ## Bunyan and logstash
 
@@ -50,3 +50,7 @@ Configure [bunyan](https://github.com/trentm/node-bunyan) to log over UDP:
     });
 
     logger.info({ value: 1 }, "Hello World!");
+
+![Kibana capture](https://i.imgur.com/u2yuKv6.png)
+
+![Wireshark bunyan capture](https://i.imgur.com/ulxG3Kz.png)
