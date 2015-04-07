@@ -12,7 +12,7 @@ var SimpleUdpStream = require('../index');
 
 describe("UDP stream", function () {
 
-  it("should receive a written message", function (done) {
+  it("should send a message", function (done) {
 
     var testMessage = "Test 1\n";
 
@@ -35,7 +35,7 @@ describe("UDP stream", function () {
     stream.write(testMessage);
   });
 
-  it("should receive a piped message", function (done) {
+  it("should pipe a message", function (done) {
 
     var params = {
       destination: '127.0.0.1',
@@ -56,7 +56,7 @@ describe("UDP stream", function () {
     fs.createReadStream(path.resolve(__dirname, 'test.message')).pipe(stream);
   });
 
-  it("should receive a bunyan log message", function (done) {
+  it("should log a bunyan message", function (done) {
 
     var params = {
       destination: '127.0.0.1',
