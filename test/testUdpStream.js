@@ -82,7 +82,7 @@ describe("UDP stream", function () {
     });
     receiver.bind(params.port, params.destination);
 
-  logger.info({ value: 1 }, "Hello");
+    logger.info({ value: 1 }, "Hello");
 
   });
 
