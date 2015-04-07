@@ -1,6 +1,7 @@
 simple-udp-stream
 =================
 
+[![Build status](https://travis-ci.org/ddm/simple-udp-stream.svg)](https://travis-ci.org/ddm/simple-udp-stream)
 [![Dependency Status](https://david-dm.org/ddm/simple-udp-stream.svg)](https://david-dm.org/ddm/simple-udp-stream)
 
 ## Basic usage
