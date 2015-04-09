@@ -88,4 +88,30 @@ describe("UDP stream", function () {
     }, "Hello");
   });
 
+  it("should send 1000 messages", function (done) {
+
+    var params = {
+      destination: '127.0.0.1',
+      port: 9999
+    };
+
+    var stream = new SimpleUdpStream(params);
+
+    var receiver = dgram.createSocket('udp4');
+    var counter = 0;
+    receiver.on('message', function (msg) {
+      expect(msg.toString()).to.equal("" + counter++);
+
+      if (counter == 999) {
+        receiver.close();
+        done();
+      }
+    });
+    receiver.bind(params.port, params.destination);
+
+    for (var i = 0; i < 1000; i++) {
+      stream.write("" + i);
+    }
+  });
+
 });
