@@ -88,7 +88,9 @@ describe("UDP stream", function () {
     }, "Hello");
   });
 
-  it("should send 1000 messages", function (done) {
+  it("should send several messages", function (done) {
+
+    var NUMBER_OF_MESSAGES = 100;
 
     var params = {
       destination: '127.0.0.1',
@@ -102,14 +104,14 @@ describe("UDP stream", function () {
     receiver.on('message', function (msg) {
       expect(msg.toString()).to.equal("" + counter++);
 
-      if (counter == 999) {
+      if (counter == NUMBER_OF_MESSAGES) {
         receiver.close();
         done();
       }
     });
     receiver.bind(params.port, params.destination);
 
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < NUMBER_OF_MESSAGES; i++) {
       stream.write("" + i);
     }
   });
