@@ -6,13 +6,15 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && npm install -g jsdoc mocha plato eslint istanbul",
+    "setup": "npm install && npm install -g mocha istanbul jsdoc eslint plato nsp npm-check-updates",
     "test": "mocha",
-    "doc": "jsdoc .",
-    "report": "plato -l .jshintrc -d out *.js test/*.js",
-    "lint": "eslint *.js test/*.js",
     "coverage": "istanbul cover --report html node_modules/.bin/_mocha",
-    "release": "npm test && npm run lint && npm version patch && git push && git push --tags && npm publish"
+    "doc": "jsdoc .",
+    "lint": "eslint *.js test/*.js",
+    "report": "plato -l .jshintrc -d out *.js test/*.js",
+    "audit": "nsp audit-package",
+    "upgrade-dependencies": "npm-check-updates -u",
+    "release": "npm test && npm run lint && npm run audit && npm version patch && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -22,20 +24,14 @@
     "env": {
       "node": true,
       "mocha": true
-    },
-    "rules": {
-      "no-underscore-dangle": 0,
-      "quotes": 0,
-      "camelcase": 0,
-      "curly": 0
     }
   },
   "dependencies": {
-    "lodash": "3.6.0"
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "bunyan": "^1.3.4",
     "chai": "^2.2.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.4"
   }
 }

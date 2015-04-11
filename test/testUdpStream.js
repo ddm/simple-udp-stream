@@ -1,14 +1,14 @@
 "use strict";
 
-var chai = require('chai');
+var chai = require("chai");
 var expect = chai.expect;
 
-var dgram = require('dgram');
-var fs = require('fs');
-var path = require('path');
-var bunyan = require('bunyan');
+var dgram = require("dgram");
+var fs = require("fs");
+var path = require("path");
+var bunyan = require("bunyan");
 
-var SimpleUdpStream = require('../index');
+var SimpleUdpStream = require("../index");
 
 describe("UDP stream", function () {
 
@@ -17,14 +17,14 @@ describe("UDP stream", function () {
     var testMessage = "Test 1\n";
 
     var params = {
-      destination: '127.0.0.1',
+      destination: "127.0.0.1",
       port: 9999
     };
 
     var stream = new SimpleUdpStream(params);
 
-    var receiver = dgram.createSocket('udp4');
-    receiver.on('message', function (msg) {
+    var receiver = dgram.createSocket("udp4");
+    receiver.on("message", function (msg) {
       expect(msg.toString()).to.equal(testMessage);
 
       receiver.close();
@@ -38,14 +38,14 @@ describe("UDP stream", function () {
   it("should pipe a message", function (done) {
 
     var params = {
-      destination: '127.0.0.1',
+      destination: "127.0.0.1",
       port: 9999
     };
 
     var stream = new SimpleUdpStream(params);
 
-    var receiver = dgram.createSocket('udp4');
-    receiver.on('message', function (msg) {
+    var receiver = dgram.createSocket("udp4");
+    receiver.on("message", function (msg) {
       expect(msg.toString()).to.equal("Test 2\n");
 
       receiver.close();
@@ -53,26 +53,26 @@ describe("UDP stream", function () {
     });
     receiver.bind(params.port, params.destination);
 
-    fs.createReadStream(path.resolve(__dirname, 'test.message')).pipe(stream);
+    fs.createReadStream(path.resolve(__dirname, "test.message")).pipe(stream);
   });
 
   it("should log a bunyan message", function (done) {
 
     var params = {
-      destination: '127.0.0.1',
+      destination: "127.0.0.1",
       port: 9999
     };
 
     var logger = bunyan.createLogger({
-      name: 'my-logger',
+      name: "my-logger",
       streams: [{
-        level: 'info',
+        level: "info",
         stream: new SimpleUdpStream(params)
       }]
     });
 
-    var receiver = dgram.createSocket('udp4');
-    receiver.on('message', function (msg) {
+    var receiver = dgram.createSocket("udp4");
+    receiver.on("message", function (msg) {
       var log = JSON.parse(msg.toString());
       expect(log).to.have.all.keys(["value", "msg", "name", "hostname", "pid", "level", "time", "v"]);
       expect(log.value).to.equal(1);
@@ -93,18 +93,18 @@ describe("UDP stream", function () {
     var NUMBER_OF_MESSAGES = 100;
 
     var params = {
-      destination: '127.0.0.1',
+      destination: "127.0.0.1",
       port: 9999
     };
 
     var stream = new SimpleUdpStream(params);
 
-    var receiver = dgram.createSocket('udp4');
+    var receiver = dgram.createSocket("udp4");
     var counter = 0;
-    receiver.on('message', function (msg) {
+    receiver.on("message", function (msg) {
       expect(msg.toString()).to.equal("" + counter++);
 
-      if (counter == NUMBER_OF_MESSAGES) {
+      if (counter === NUMBER_OF_MESSAGES) {
         receiver.close();
         done();
       }
