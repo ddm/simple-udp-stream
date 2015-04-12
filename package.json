@@ -20,7 +20,9 @@
     "report": "plato -l .jshintrc -d out *.js test/*.js",
     "audit": "nsp audit-package",
     "upgrade-dependencies": "npm-check-updates -u",
-    "release": "npm test && npm run lint && npm run audit && npm version patch && git push && git push --tags && npm publish"
+    "patch-release": "npm test && npm run lint && npm run audit && npm version patch && git push && git push --tags && npm publish",
+    "minor-release": "npm test && npm run lint && npm run audit && npm version patch && git push && git push --tags && npm publish",
+    "major-release": "npm test && npm run lint && npm run audit && npm version patch && git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",

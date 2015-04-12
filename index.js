@@ -27,7 +27,9 @@ function SimpleUdpStream(options) {
   }
 
   this.destinationAddress = _.isString(options.destination) ? options.destination : "0.0.0.0";
-  this.destinationPort = _.isNumber(options.port) ? options.port : _.isString(options.port) ? parseInt(options.port) : 9999; // default logstash port for UDP
+  this.destinationPort = _.isNumber(options.port) ? options.port
+      : _.isString(options.port) ? parseInt(options.port, 10)
+      : 9999; // default logstash port for UDP
 
   stream.Writable.call(this);
 
