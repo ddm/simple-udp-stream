@@ -59,6 +59,6 @@ Configure [bunyan](https://github.com/trentm/node-bunyan) to log over UDP:
 
 IPv4 only for now. Open a GitHub issue if that is an issue for you. IPv6 support should be easy to add.
 
-Message size is limited by the smallest MTU between source and destination: https://nodejs.org/api/dgram.html#dgram_socket_send_buf_offset_length_port_address_callback
+Message size is limited by the smallest MTU between source and destination: [see Node.js documentation](https://nodejs.org/api/dgram.html#dgram_socket_send_buf_offset_length_port_address_callback).
 
 If a message is too big, it will simply be dropped...
