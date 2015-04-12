@@ -2,6 +2,12 @@
   "name": "simple-udp-stream",
   "version": "0.0.7",
   "description": "Writable stream over UDP",
+  "keywords": [
+    "udp",
+    "stream",
+    "bunyan",
+    "logstash"
+  ],
   "author": "Dimitri del Marmol",
   "license": "MIT",
   "main": "index.js",
