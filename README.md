@@ -1,8 +1,9 @@
 simple-udp-stream
 =================
 
-[![Build status](https://travis-ci.org/ddm/simple-udp-stream.svg)](https://travis-ci.org/ddm/simple-udp-stream)
-[![Dependencies status](https://david-dm.org/ddm/simple-udp-stream.svg)](https://david-dm.org/ddm/simple-udp-stream)
+[![build](https://travis-ci.org/ddm/simple-udp-stream.svg)](https://travis-ci.org/ddm/simple-udp-stream)
+[![dependencies](https://david-dm.org/ddm/simple-udp-stream.svg)](https://david-dm.org/ddm/simple-udp-stream)
+[![npm version](https://badge.fury.io/js/simple-udp-stream.svg)](https://www.npmjs.com/package/simple-udp-stream)
 
 ## Basic usage
 
@@ -15,7 +16,7 @@ simple-udp-stream
 
     stream.write("Hello World!");
 
-![Wireshark simple capture](https://i.imgur.com/89Am8Zu.png)
+![wireshark simple capture](https://i.imgur.com/89Am8Zu.png)
 
 ## Bunyan and logstash
 
@@ -51,9 +52,9 @@ Configure [bunyan](https://github.com/trentm/node-bunyan) to log over UDP:
 
     logger.info({ value: 1 }, "Hello World!");
 
-![Kibana capture](https://i.imgur.com/u2yuKv6.png)
+![kibana capture](https://i.imgur.com/u2yuKv6.png)
 
-![Wireshark bunyan capture](https://i.imgur.com/ulxG3Kz.png)
+![wireshark bunyan capture](https://i.imgur.com/ulxG3Kz.png)
 
 ## Limitations
 
