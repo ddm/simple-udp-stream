@@ -116,4 +116,50 @@ describe("UDP stream", function () {
     }
   });
 
+  it("should end gracefully", function (done) {
+    var testMessage = "Last message";
+
+    var params = {
+      destination: "127.0.0.1",
+      port: 9999
+    };
+
+    var stream = new SimpleUdpStream(params);
+
+    var receiver = dgram.createSocket("udp4");
+    receiver.on("message", function (msg) {
+      expect(msg.toString()).to.equal(testMessage);
+    });
+    receiver.bind(params.port, params.destination);
+
+    stream.end(testMessage, "utf8", function () {
+      receiver.close();
+      done();
+    });
+  });
+
+  it("should emit 'finish' on end", function (done) {
+    var testMessage = "Last message";
+
+    var params = {
+      destination: "127.0.0.1",
+      port: 9999
+    };
+
+    var stream = new SimpleUdpStream(params);
+
+    var receiver = dgram.createSocket("udp4");
+    receiver.on("message", function (msg) {
+      expect(msg.toString()).to.equal(testMessage);
+    });
+    receiver.bind(params.port, params.destination);
+
+    stream.on('finish', function () {
+      receiver.close();
+      done();
+    });
+
+    stream.end(testMessage, "utf8");
+  });
+
 });

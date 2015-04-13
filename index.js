@@ -78,18 +78,50 @@ util.inherits(SimpleUdpStream, stream.Writable);
  * @private
  */
  /* eslint no-underscore-dangle:0 */
-SimpleUdpStream.prototype._write = function (chunk, encoding, callback) {
+SimpleUdpStream.prototype._write = function _write(chunk, encoding, callback) {
   var message = (chunk instanceof Buffer) ? chunk
       : _.isString(chunk) ? new Buffer(chunk, encoding)
       : (chunk && _.isFunction(chunk.toString)) ? new Buffer(chunk.toString(), encoding)
       : new Buffer("" + chunk, encoding);
 
-  this.socket.send(message, 0, message.length, this.destinationPort, this.destinationAddress);
+  this.socket.send(message, 0, message.length, this.destinationPort, this.destinationAddress, function () {
+    if (_.isFunction(callback)) {
+      callback();
+    }
+  });
 
-  if (_.isFunction(callback)) {
-    callback();
-  }
   return true;
+};
+
+/**
+ * See <a href="https://nodejs.org/api/stream.html#stream_writable_end_chunk_encoding_callback">node.js documentation</a>
+ *
+ * @method end
+ * @memberOf SimpleUdpStream
+ * @instance
+ *
+ * @param {!string|!Buffer} chunk - the data to write
+ * @param {?string} encoding - the encoding, if <code>chunk</code> is a string
+ * @param {?SimpleUdpStream~writeCallback} callback - callback upon write
+ */
+SimpleUdpStream.prototype.end = function end(chunk, encoding, callback) {
+  var self = this;
+  if (_.isFunction(callback)) {
+    self.on("finish", callback);
+  }
+
+  function closeSocket() {
+    self.socket.on("close", function () {
+      self.emit("finish");
+    });
+    self.socket.close();
+  }
+
+  if (chunk) {
+    self.write(chunk, encoding, closeSocket);
+  } else {
+    closeSocket();
+  }
 };
 
 module.exports = SimpleUdpStream;
