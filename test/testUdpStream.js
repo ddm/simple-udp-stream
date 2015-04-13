@@ -28,6 +28,7 @@ describe("UDP stream", function () {
       expect(msg.toString()).to.equal(testMessage);
 
       receiver.close();
+      stream.end();
       done();
     });
     receiver.bind(params.port, params.destination);
@@ -44,6 +45,7 @@ describe("UDP stream", function () {
       expect(msg.toString()).to.equal("Test 2\n");
 
       receiver.close();
+      stream.end();
       done();
     });
     receiver.bind(params.port, params.destination);
@@ -69,6 +71,7 @@ describe("UDP stream", function () {
       expect(log.msg).to.equal("Hello");
 
       receiver.close();
+      logger.streams[0].stream.end();
       done();
     });
     receiver.bind(params.port, params.destination);
@@ -91,6 +94,7 @@ describe("UDP stream", function () {
 
       if (counter === NUMBER_OF_MESSAGES) {
         receiver.close();
+        stream.end();
         done();
       }
     });
