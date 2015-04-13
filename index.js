@@ -120,7 +120,7 @@ SimpleUdpStream.prototype.end = function end(chunk, encoding, callback) {
   if (chunk) {
     self.write(chunk, encoding, closeSocket);
   } else {
-    closeSocket();
+    setImmediate(closeSocket);
   }
 };
 
