@@ -154,7 +154,7 @@ describe("UDP stream", function () {
     });
     receiver.bind(params.port, params.destination);
 
-    stream.on('finish', function () {
+    stream.on("finish", function () {
       receiver.close();
       done();
     });
