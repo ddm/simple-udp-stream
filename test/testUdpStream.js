@@ -10,16 +10,16 @@ var bunyan = require("bunyan");
 
 var SimpleUdpStream = require("../index");
 
+var params = {
+  destination: "127.0.0.1",
+  port: 9999
+};
+
 describe("UDP stream", function () {
 
   it("should send a message", function (done) {
 
     var testMessage = "Test 1\n";
-
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
 
     var stream = new SimpleUdpStream(params);
 
@@ -37,11 +37,6 @@ describe("UDP stream", function () {
 
   it("should pipe a message", function (done) {
 
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
-
     var stream = new SimpleUdpStream(params);
 
     var receiver = dgram.createSocket("udp4");
@@ -57,11 +52,6 @@ describe("UDP stream", function () {
   });
 
   it("should log a bunyan message", function (done) {
-
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
 
     var logger = bunyan.createLogger({
       name: "my-logger",
@@ -92,11 +82,6 @@ describe("UDP stream", function () {
 
     var NUMBER_OF_MESSAGES = 100;
 
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
-
     var stream = new SimpleUdpStream(params);
 
     var receiver = dgram.createSocket("udp4");
@@ -117,12 +102,8 @@ describe("UDP stream", function () {
   });
 
   it("should end gracefully", function (done) {
-    var testMessage = "Last message";
 
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
+    var testMessage = "Last message";
 
     var stream = new SimpleUdpStream(params);
 
@@ -140,11 +121,6 @@ describe("UDP stream", function () {
 
   it("should emit 'finish' on end", function (done) {
     var testMessage = "Last message";
-
-    var params = {
-      destination: "127.0.0.1",
-      port: 9999
-    };
 
     var stream = new SimpleUdpStream(params);
 
