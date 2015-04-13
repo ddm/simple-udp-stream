@@ -16,6 +16,8 @@ simple-udp-stream
 
     stream.write("Hello World!");
 
+    stream.end();
+
 ![wireshark simple capture](https://i.imgur.com/89Am8Zu.png)
 
 ## Bunyan and logstash
@@ -39,18 +41,22 @@ Configure [bunyan](https://github.com/trentm/node-bunyan) to log over UDP:
 
     var bunyan = require('bunyan');
 
+    var udpStream = require('simple-udp-stream')({
+      destination: '127.0.0.1',
+      port: 9999
+    });
+
     var logger = bunyan.createLogger({
       name: 'my-logger',
       streams: [{
         level: 'info',
-        stream: require('simple-udp-stream')({
-          destination: '127.0.0.1',
-          port: 9999
-        })
+        stream: udpStream
       }]
     });
 
     logger.info({ value: 1 }, "Hello World!");
+
+    udpStream.end();
 
 ![kibana capture](https://i.imgur.com/u2yuKv6.png)
 
