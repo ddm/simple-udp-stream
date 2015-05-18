@@ -44,10 +44,10 @@ function SimpleUdpStream(options) {
 
   var self = this;
   function onShutdown() { self.end(); }
-  process.once('SIGTERM', onShutdown);
-  process.once('SIGINT', onShutdown);
-  process.once('message', function (msg) { if (msg === 'shutdown') onShutdown(); });
-  process.once('uncaughtException', onShutdown);
+  process.once("SIGTERM", onShutdown);
+  process.once("SIGINT", onShutdown);
+  process.once("message", function (msg) { if (msg === "shutdown") { onShutdown(); } });
+  process.once("uncaughtException", onShutdown);
 }
 
 util.inherits(SimpleUdpStream, stream.Writable);
