@@ -21,9 +21,9 @@
     "upgrade-dependencies": "ncu -ua && npm i",
     "prepare-release": "npm test && npm run lint && npm run audit",
     "publish-release": "git push && git push --tags && npm publish",
-    "patch-release": "run run prepare-release && npm version patch && npm run publish-release",
-    "minor-release": "run run prepare-release && npm version minor && npm run publish-release",
-    "major-release": "run run prepare-release && npm version major && npm run publish-release"
+    "patch-release": "npm run prepare-release && npm version patch && npm run publish-release",
+    "minor-release": "npm run prepare-release && npm version minor && npm run publish-release",
+    "major-release": "npm run prepare-release && npm version major && npm run publish-release"
   },
   "repository": {
     "type": "git",
