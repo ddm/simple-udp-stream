@@ -37,14 +37,14 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "bunyan": "^1.3.5",
-    "chai": "^2.3.0",
-    "eslint": "^0.22.1",
-    "istanbul": "^0.3.14",
-    "jsdoc": "^3.3.0",
-    "mocha": "^2.2.5",
-    "npm-check-updates": "^1.5.1",
-    "nsp": "^1.0.1",
+    "bunyan": "^1.5.1",
+    "chai": "^3.3.0",
+    "eslint": "^1.5.1",
+    "istanbul": "^0.3.21",
+    "jsdoc": "^3.3.3",
+    "mocha": "^2.3.3",
+    "npm-check-updates": "^2.2.4",
+    "nsp": "^1.1.0",
     "plato": "^1.5.0"
   }
 }
