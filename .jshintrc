@@ -15,6 +15,7 @@
     "beforeEach": false,
     "after": false,
     "afterEach": false,
+    "setImmediate": false,
     "Buffer": false
   }
 }

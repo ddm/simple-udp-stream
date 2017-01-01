@@ -17,7 +17,7 @@
     "doc": "jsdoc -d doc .",
     "lint": "eslint *.js test/*.js",
     "report": "plato -l .jshintrc -d report *.js test/*.js",
-    "audit": "nsp audit-package",
+    "audit": "nsp check",
     "upgrade-dependencies": "ncu -ua && npm i",
     "prepare-release": "npm test && npm run lint && npm run audit",
     "publish-release": "git push && git push --tags && npm publish",
@@ -39,14 +39,14 @@
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "bunyan": "^1.8.1",
-    "chai": "^3.5.0",
-    "eslint": "^3.2.2",
-    "istanbul": "^0.4.4",
-    "jsdoc": "^3.4.0",
-    "mocha": "^3.0.2",
-    "npm-check-updates": "^2.8.0",
-    "nsp": "^2.6.1",
-    "plato": "^1.7.0"
+    "bunyan": "1.8.5",
+    "chai": "3.5.0",
+    "eslint": "3.12.2",
+    "istanbul": "0.4.5",
+    "jsdoc": "3.4.3",
+    "mocha": "3.2.0",
+    "npm-check-updates": "2.8.9",
+    "nsp": "2.6.2",
+    "plato": "1.7.0"
   }
 }
