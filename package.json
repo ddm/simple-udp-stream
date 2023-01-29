@@ -1,6 +1,6 @@
 {
   "name": "simple-udp-stream",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Writable stream over UDP",
   "keywords": [
     "udp",
