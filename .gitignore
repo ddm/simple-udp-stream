@@ -3,3 +3,5 @@ coverage
 doc
 report
 *.log
+.idea
+package-lock.json
